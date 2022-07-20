@@ -1,0 +1,36 @@
+<!--
+ * @FilePath: /extend-menu-tree/index.html
+ * @Author: maggot-code
+ * @Date: 2022-07-21 00:22:44
+ * @LastEditors: maggot-code
+ * @LastEditTime: 2022-07-21 01:49:47
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extend Menu Tree</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="menu-container">
+            <div class="menu-row-label">
+                <span class="menu-label-before">前缀</span>
+                <span class="menu-label-content">卡巴拉生命树</span>
+                <span class="menu-label-after">后缀</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="module">
+    import useMenu from "./index.js";
+    useMenu(document.getElementById("app"));
+</script>
