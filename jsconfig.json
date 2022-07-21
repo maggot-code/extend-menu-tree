@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "target": "es6",
         "module": "commonjs",
         "allowSyntheticDefaultImports": true,
-        "baseUrl": "."
+        "baseUrl": ".",
+        "jsx": "preserve"
     },
     "vueCompilerOptions": {
-        "experimentalCompatMode": 3
-    },
+        "experimentalCompatMode": 2
+    }
 }
