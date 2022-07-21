@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-21 13:28:59
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-21 16:01:37
+ * @LastEditTime: 2022-07-21 17:55:34
  * @Description: 
  */
 import {
@@ -12,6 +12,11 @@ import {
     hasContentAddress,
     hasRenderNode,
     hasDisabledNode,
+    getCellAll,
+    setupCellId,
+    setupCellOpenClass,
+    setupCellActiveClass,
+    clearCellActiveClass,
 } from "./utils.js";
 
 export const transformNode = (parent) => (node, index, tree) => {
@@ -32,7 +37,7 @@ export const transformNode = (parent) => (node, index, tree) => {
     });
     tnode.path = useNodePath(tnode, index, tree);
     tnode.children = hasChild ? setupTree(tnode.children, tnode) : [];
-    console.log(tnode);
+    // console.log(tnode);
     return tnode;
 }
 
@@ -42,6 +47,9 @@ export function useNodePath(node, index, tree) {
     const start = value[0];
     const end = value.at(-1);
 
+    const map = (callBack) => {
+        return value.map(callBack);
+    }
     const toString = (connect = ",") => value.join(connect);
     const findPrevNode = () => {
         if (!hasParent) return null;
@@ -61,6 +69,7 @@ export function useNodePath(node, index, tree) {
         value,
         start,
         end,
+        map,
         toString,
         findPrevNode,
         findNextNode,
@@ -93,8 +102,21 @@ export function setupTreeToStruct(tree, options) {
             return setupCell(
                 node,
                 label,
-                setupCellChild(child)
+                setupCellChild(node, child)
             );
         }).join("")
     ).replace(/\n|\r/g, "");
 }
+
+export function setupDefaultOpenCell(node) {
+    node.path.map((id) => {
+        setupCellOpenClass(document.getElementById(setupCellId(id)));
+    });
+}
+export function setupDefaultActiveNode(node) {
+    const { id } = node;
+    getCellAll().forEach(clearCellActiveClass);
+    setupCellActiveClass(document.getElementById(setupCellId(id)));
+}
+
+export function setupActiveNode() { }

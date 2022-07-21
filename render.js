@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-21 11:04:50
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-21 15:54:29
+ * @LastEditTime: 2022-07-21 16:47:50
  * @Description: 
  */
 import {
@@ -34,10 +34,16 @@ export function renderContainer(options, struct) {
 
 export function renderCell(node, label, child) {
     const { id, level, hasChild } = node;
-    const className = setupCellClassName(node);
+    const extendClassName = setupCellClassName(node);
+    const className = [
+        MENU_CELL_CLASS,
+        extendClassName,
+        MENU_CELL_CLOSE_CLASS
+    ].join(" ");
+
     return (
         `<li
-            class="${MENU_CELL_CLASS} ${MENU_CELL_CLOSE_CLASS} ${className}"
+            class="${className}"
             id="${MENU_CELL_CLASS}-${id}"
             data-level="${level}"
             data-has-child="${hasChild}"
@@ -58,7 +64,7 @@ export function renderCellLabel(node) {
     );
 }
 
-export function renderCellChild(struct) {
+export function renderCellChild(node, struct) {
     return (
         `<div class="${MENU_CELL_CHILD_CLASS}">${struct}</div>`
     );

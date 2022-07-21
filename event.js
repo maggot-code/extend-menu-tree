@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-21 14:53:08
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-21 15:44:26
+ * @LastEditTime: 2022-07-21 17:58:16
  * @Description: 
  */
 import {
@@ -14,28 +14,15 @@ import {
     MENU_CELL_CLOSE_CLASS,
     MENU_CELL_ACTIVE_CLASS,
 } from "./context.js";
+import { on, off } from "./dom.js";
 
-const containerEvent = {
-    click: () => console.log('容器点击')
-};
-const cellEvent = {
-    click: () => console.log('单元格点击')
-};
-const cellLabelEvent = {
-    click: () => console.log('标题点击')
-};
-
-function setupClickEvent(event) {
-    const { target } = event;
-    const { className } = target;
-    console.log(className);
+export function setupClickEvent(event) {
+    console.log(event);
 }
-function setupMouseoverEvent() { }
-function setupMouseoutEvent() { }
 
 export function installEvent(app) {
-    app.addEventListener("click", setupClickEvent);
-    // app.addEventListener("mouseover", setupMouseoverEvent);
-    // app.addEventListener("mouseout", setupMouseoutEvent);
+    on(app, "click", setupClickEvent);
+    // on(app, "mouseover",)
+    // on(app, "mouseout",)
 }
 export function uninstallEvent(app) { }
