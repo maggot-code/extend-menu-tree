@@ -3,17 +3,17 @@
  * @Author: maggot-code
  * @Date: 2022-07-21 23:41:35
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-22 00:48:40
+ * @LastEditTime: 2022-07-22 01:19:28
  * @Description: 
 -->
 <script setup>
-import MenuContainer from "./MenuContainer.vue";
+import MenuTree from "./MenuTree.vue";
+import MenuJson from "@/assets/json/menu-tree";
+const { datasource } = MenuJson;
 </script>
 
 <template>
-    <div>
-        <MenuContainer></MenuContainer>
-    </div>
+    <MenuTree :tree=datasource></MenuTree>
 </template>
 
 <style scoped>
