@@ -3,13 +3,17 @@
  * @Author: maggot-code
  * @Date: 2022-07-21 23:41:35
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-21 23:58:17
+ * @LastEditTime: 2022-07-22 00:48:40
  * @Description: 
 -->
-<script setup></script>
+<script setup>
+import MenuContainer from "./MenuContainer.vue";
+</script>
 
 <template>
-    <h1>App</h1>
+    <div>
+        <MenuContainer></MenuContainer>
+    </div>
 </template>
 
 <style scoped>
