@@ -1,9 +1,9 @@
 <!--
- * @FilePath: /extend-menu-tree/index.html
+ * @FilePath: \extend-menu-tree\index.html
  * @Author: maggot-code
  * @Date: 2022-07-21 00:22:44
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-21 01:49:47
+ * @LastEditTime: 2022-07-21 14:16:16
  * @Description: 
 -->
 <!DOCTYPE html>
@@ -19,18 +19,48 @@
 
 <body>
     <div id="app">
-        <div class="menu-container">
-            <div class="menu-row-label">
-                <span class="menu-label-before">前缀</span>
-                <span class="menu-label-content">卡巴拉生命树</span>
-                <span class="menu-label-after">后缀</span>
-            </div>
-        </div>
+        <ul class="menu-container">
+            <li class="menu-cell">
+                <div class="menu-cell-label">
+                    <span class="menu-label-before">前缀</span>
+                    <span class="menu-label-content">卡巴拉生命树</span>
+                    <span class="menu-label-after">后缀</span>
+                </div>
+                <div class="menu-cell-child">
+                    <ul class="menu-container">
+                        <li class="menu-cell">
+                            <div class="menu-cell-label">label</div>
+                            <div class="menu-cell-child">child</div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="menu-cell">
+                <div class="menu-cell-label">
+                    <span class="menu-label-before">前缀</span>
+                    <span class="menu-label-content">系统管理</span>
+                    <span class="menu-label-after">后缀</span>
+                </div>
+                <div class="menu-cell-child">
+                    <ul class="menu-container">
+                        <li class="menu-cell">
+                            <div class="menu-cell-label">label</div>
+                            <div class="menu-cell-child">child</div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </div>
 </body>
 
 </html>
 <script type="module">
+    import MenuTree from "./menu-tree.js";
     import useMenu from "./index.js";
-    useMenu(document.getElementById("app"));
+
+    const { tree, struct } = useMenu(MenuTree);
+
+    console.log(tree, struct);
+    document.getElementById("app").innerHTML = struct;
 </script>
