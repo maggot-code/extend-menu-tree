@@ -3,7 +3,7 @@
  * @Author: maggot-code
  * @Date: 2022-07-21 00:22:44
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-21 14:16:16
+ * @LastEditTime: 2022-07-21 15:28:07
  * @Description: 
 -->
 <!DOCTYPE html>
@@ -59,8 +59,16 @@
     import MenuTree from "./menu-tree.js";
     import useMenu from "./index.js";
 
-    const { tree, struct } = useMenu(MenuTree);
+    console.time("useMenu");
 
-    console.log(tree, struct);
-    document.getElementById("app").innerHTML = struct;
+    const { onMounted, onUnmounted } = useMenu(MenuTree);
+    onMounted(document.getElementById("app"));
+    // onUnmounted(document.getElementById("app"));
+
+    // document.getElementById("app").addEventListener("click");
+    // document.getElementById("app").addEventListener("mouseover");
+    // document.getElementById("app").addEventListener("mouseout");
+    // document.getElementById("app").removeEventListener
+
+    console.timeEnd("useMenu");
 </script>

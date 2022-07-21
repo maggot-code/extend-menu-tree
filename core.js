@@ -3,23 +3,36 @@
  * @Author: maggot-code
  * @Date: 2022-07-21 13:28:59
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-21 14:43:29
+ * @LastEditTime: 2022-07-21 16:01:37
  * @Description: 
  */
-import { hasParentNode, hasChildren } from "./utils.js";
+import {
+    hasParentNode,
+    hasChildren,
+    hasContentAddress,
+    hasRenderNode,
+    hasDisabledNode,
+} from "./utils.js";
 
 export const transformNode = (parent) => (node, index, tree) => {
     const hasParent = hasParentNode(parent);
     const hasChild = hasChildren(node);
+    const hasPage = hasContentAddress(node);
+    const hasRender = hasRenderNode(node) ? node.isRender : true;
+    const hasDisabled = hasDisabledNode(node) ? node.disabled : false;
     const level = hasParent ? parent.level + 1 : 0;
     const tnode = Object.assign({}, node, {
         hasParent,
         hasChild,
+        hasPage,
+        hasRender,
+        hasDisabled,
         parent,
         level,
     });
     tnode.path = useNodePath(tnode, index, tree);
     tnode.children = hasChild ? setupTree(tnode.children, tnode) : [];
+    console.log(tnode);
     return tnode;
 }
 
@@ -59,13 +72,13 @@ export function setupTree(tree, parent = null) {
 }
 
 export function setupTreeToStruct(tree, options) {
+    const [{ level }] = tree;
     const {
         setupContainer,
         setupCell,
         setupCellLabel,
         setupCellChild,
     } = options;
-    const [{ level }] = tree;
     const structOptions = {
         level,
     };

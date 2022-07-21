@@ -3,43 +3,19 @@
  * @Author: maggot-code
  * @Date: 2022-07-21 11:04:50
  * @LastEditors: maggot-code
- * @LastEditTime: 2022-07-21 14:44:45
+ * @LastEditTime: 2022-07-21 15:54:29
  * @Description: 
  */
-/**
-<ul class="menu-container">
-    <li class="menu-cell">
-        <div class="menu-cell-label">
-            <span class="menu-label-before">前缀</span>
-            <span class="menu-label-content">卡巴拉生命树</span>
-            <span class="menu-label-after">后缀</span>
-        </div>
-        <div class="menu-cell-child">
-            <ul class="menu-container">
-                <li class="menu-cell">
-                    <div class="menu-cell-label">label</div>
-                    <div class="menu-cell-child">child</div>
-                </li>
-            </ul>
-        </div>
-    </li>
-    <li class="menu-cell">
-        <div class="menu-cell-label">
-            <span class="menu-label-before">前缀</span>
-            <span class="menu-label-content">系统管理</span>
-            <span class="menu-label-after">后缀</span>
-        </div>
-        <div class="menu-cell-child">
-            <ul class="menu-container">
-                <li class="menu-cell">
-                    <div class="menu-cell-label">label</div>
-                    <div class="menu-cell-child">child</div>
-                </li>
-            </ul>
-        </div>
-    </li>
-</ul>
-*/
+import {
+    MENU_CONTAINER_CLASS,
+    MENU_CELL_CLASS,
+    MENU_CELL_LABEL_CLASS,
+    MENU_CELL_CHILD_CLASS,
+    MENU_CELL_OPEN_CLASS,
+    MENU_CELL_CLOSE_CLASS,
+    MENU_CELL_ACTIVE_CLASS,
+} from "./context.js";
+
 export function setupContainerClassName(options) {
     const { level } = options;
     return `menu-container-level-${level}`;
@@ -52,7 +28,7 @@ export function setupCellClassName(node) {
 export function renderContainer(options, struct) {
     const className = setupContainerClassName(options);
     return (
-        `<ul class="menu-container ${className}">${struct}</ul>`
+        `<ul class="${MENU_CONTAINER_CLASS} ${className}">${struct}</ul>`
     );
 }
 
@@ -61,8 +37,8 @@ export function renderCell(node, label, child) {
     const className = setupCellClassName(node);
     return (
         `<li
-            class="menu-cell ${className}"
-            id="menu-cell-${id}"
+            class="${MENU_CELL_CLASS} ${MENU_CELL_CLOSE_CLASS} ${className}"
+            id="${MENU_CELL_CLASS}-${id}"
             data-level="${level}"
             data-has-child="${hasChild}"
         >
@@ -76,7 +52,7 @@ export function renderCellLabel(node) {
     const { title } = node;
 
     return (
-        `<div class="menu-cell-label">
+        `<div class="${MENU_CELL_LABEL_CLASS}">
             <span class="menu-label-content">${title}</span>
         </div>`
     );
@@ -84,6 +60,6 @@ export function renderCellLabel(node) {
 
 export function renderCellChild(struct) {
     return (
-        `<div class="menu-cell-child">${struct}</div>`
+        `<div class="${MENU_CELL_CHILD_CLASS}">${struct}</div>`
     );
 }

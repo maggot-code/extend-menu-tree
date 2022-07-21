@@ -7,3 +7,41 @@ html,body{
     height: 100%;
     overflow: hidden;
 }
+
+.menu-container{
+    width: 100%;
+    background-color: #F56C6C;
+    color: #fff;
+}
+
+.menu-cell{
+    width: 90%;
+    background-color: pink;
+    color: #666;
+}
+
+.menu-cell-label{
+    width: 80%;
+    background-color: #E6A23C;
+    color: #fff;
+}
+
+.menu-cell-child{
+    width: 70%;
+    background-color: #666;
+    color: #fff;
+}
+
+.menu-open{
+    height: auto;
+    display: block;
+}
+
+.menu-close{
+    height: 0;
+    display: none;
+}
+
+.menu-active{
+    display: block;
+}
