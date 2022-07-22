@@ -9,59 +9,9 @@ html,body{
 }
 
 #app{
-    margin: 0 auto;
-    width: 200px;
-    height: 300px;
+    margin: 200px auto;
+    width: 300px;
+    height: 600px;
     border: 1px solid red;
     box-sizing: border-box;
-}
-
-.menu-container{
-    top: 0;
-    left: 50%;
-    width: 100%;
-    height:auto;
-    min-height: 100%;
-}
-
-.menu-cell{
-    width: 100%;
-    height:auto;
-    box-sizing: border-box;
-}
-
-.menu-cell-label{}
-
-.menu-cell-child{
-    width: 100%;
-    height: auto;
-}
-
-.menu-active{
-    color: red;
-}
-
-.menu-close>.menu-cell-child{
-    height: 0;
-    display: none;
-}
-.menu-open>.menu-cell-child{
-    height: auto;
-    display: block;
-}
-
-.menu-cell-level-0{
-    padding-left: 0;
-}
-.menu-cell-level-1 {
-    padding-left: 10px;
-}
-.menu-cell-level-2 {
-    padding-left: 20px;
-}
-.menu-cell-level-3 {
-    padding-left: 30px;
-}
-.menu-cell-level-4 {
-    padding-left: 40px;
 }
